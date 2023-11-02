@@ -1,0 +1,21 @@
+#q1{
+    height: 150px;
+    width:300px;
+    background-color: grey;
+    Border:5px dotted black;
+    margin-top:20px;
+    margin-bottom: 40px;
+    margin-left:2em;
+    padding:1em;
+}
+.q2{
+    height:100px;
+    width:100px;
+    border:2px solid black;
+    border-radius:100%;
+    display:inline-block;
+    background-color:pink;
+}
+#technologies{
+    display:inline;
+}
