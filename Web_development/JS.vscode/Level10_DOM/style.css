@@ -1,0 +1,13 @@
+body{
+    text-align: center;
+}
+button{
+    margin:10px;
+}
+div{
+    height:100px;
+    width:500px;
+    border: 1px solid black;
+    margin:auto;
+}
+/* using event listener to generate random colors for div */
