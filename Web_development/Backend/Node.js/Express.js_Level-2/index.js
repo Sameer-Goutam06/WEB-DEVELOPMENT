@@ -44,3 +44,6 @@ app.get("/secondary",(req,res)=>{
 app.get("*",(req,res)=>{
     res.send("invalid path");
 });
+
+//Nodemon is used to automatically restart server with code changes
+//if not using it we need to stop server while making changes and we need to restart server
