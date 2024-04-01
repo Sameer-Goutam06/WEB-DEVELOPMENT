@@ -2,3 +2,23 @@ EJS- Embeddded Javascript templates
 EJS is a simple templating language that lets you generate HTML markup with plain Javascript.
 It is a blueprint designed for multiple copies of the same user.
 it is like instagram account page is atemplate designed for each ans=d every user using instagram.
+
+but to send a large response we need to create an ejs file in the views folder which is basically containing html files
+express when we call something to render it by default checks the views folder and returns the page template.
+we can even keep another name for views folder but that is not recommended.
+
+app.get('/', function(req, res){
+    res.render('home.ejs');
+});
+
+Conditional statements
+    <% if (dice==6) { %>
+    <p>Nice roll it again</p>
+    <% } %>
+
+for loop
+    <ul style="list-style: none;">
+        <% for(let name of Followers) { %>
+        <li><%= name %></li>
+        <% } %>
+    </ul> 
