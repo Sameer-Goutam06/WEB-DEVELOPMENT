@@ -1,2 +1,4 @@
 EJS- Embeddded Javascript templates
 EJS is a simple templating language that lets you generate HTML markup with plain Javascript.
+It is a blueprint designed for multiple copies of the same user.
+it is like instagram account page is atemplate designed for each ans=d every user using instagram.
