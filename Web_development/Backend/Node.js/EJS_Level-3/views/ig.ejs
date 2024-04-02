@@ -1,14 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Instagram.ejs</title>
-</head>
+<%- include('includes/head.ejs') %>
+<!-- we must not use slash before includes folder in includes() -->
 <body>
+    <!-- Use only ejs output tags specifically to use dot notation-->
     <h1>@<%=data["name"]%></h1>
     <!--In json file since everything is denoted using strings except values we need to check them as strings-->
     <button>follow</button>
     <button>message</button>
+    <p>Followers: <%= data.followers %></p>
+    <p>Following: <%= data.following %></p>
+    <hr>
+    <% for(let post of data["posts"]) { %>
+        <img src='<%= post["image"] %>' alt="some img">
+        <p>Likes: <%= post.likes %></p>
+        <p>Comments: <%= post.comments %> </p>
+    <% } %>
+    <%- include('includes/footer.ejs') %>
+    <script src="/app.js"></script>
 </body>
 </html>
