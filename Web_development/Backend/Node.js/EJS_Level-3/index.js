@@ -41,9 +41,9 @@ app.get('/rolldice', function(req, res){
 //creating a sample instagram template with ejs
 app.get('/ig/:username',(req,res)=>{
     const instadata=require('./data.json');
-    let {uname}=req.params;//potential risk of error 1
+    let {username}=req.params;//we need to use the same parameter passed as an request to check inside the json file
     // let followers=["Sameer","Sahith","Sakshith"];
     // res.render("ig.ejs",{Username:uname,Followers:followers});
-    const data=instadata[uname];//potential risk of error 2 and 3
+    const data=instadata[username];
     res.render('ig.ejs',{data});
 });
