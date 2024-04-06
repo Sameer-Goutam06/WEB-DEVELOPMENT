@@ -1,0 +1,20 @@
+Get and post requests
+get-
+1. used to get some response
+2. data is sent in  query strings
+post-
+1. used to post something(create/write/update)
+2. data is sent inrequest body(any type of data)
+
+req.query to take values
+from the query string get request
+
+OOPS JS
+object prototypes:
+    prototypes are mechanism by which javascript objects inherit features from 
+    one another.
+    it is like a single template object that all objects inherit methods and features
+    without having their own copy
+    'arr._proto_' (reference)
+    'Array.prototype' (actual object)
+    
