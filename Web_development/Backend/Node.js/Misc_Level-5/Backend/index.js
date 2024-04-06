@@ -17,3 +17,27 @@ app.post('/register', function(req, res){
 app.listen(port,()=>{
     console.log('listening on port '+port);
 });
+
+//oops concepts
+class Box{
+    constructor(name,l,b){
+        this.l=l;
+        this.name=name;
+        this.b=b;
+    }
+    area(){
+        let area=this.l*this.b;
+        console.log(area);
+    }
+}
+class Square extends Box{
+    constructor(a){
+        super("square",a,a);
+    }
+    area(){
+        let area=this.l*this.b;
+        console.log(area);
+    }
+}
+let s=new Square(4);
+s.area();
