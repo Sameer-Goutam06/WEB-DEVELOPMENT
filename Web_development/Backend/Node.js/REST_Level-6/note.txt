@@ -1,0 +1,2 @@
+REST- Representational state transfer
+REST is an architectural style that defines a set of constraints to be used for creating web services.
