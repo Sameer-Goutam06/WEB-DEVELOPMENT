@@ -1,2 +1,25 @@
 REST- Representational state transfer
 REST is an architectural style that defines a set of constraints to be used for creating web services.
+
+CRUD:
+GET retreives the resources
+POST submits new data to the server
+PUT updates existing data to the server
+PATCH updates existing data to the server partially
+DELETE removes the data from the server
+
+RESTFUL API'S for Quora features:
+1. view
+2. individual
+3. edit 
+4. DELETE
+
+creating RESTFUL API'S for Quora features:
+GET - /posts to get data for all posts
+POST - /posts to add a new post
+GET - /posts/:id to get specific post data
+PATCH - /posts/:id to update specific post data
+DELETE- - /posts/:id to delete specific post data
+
+redirection of pages:
+re.redirect(url)
