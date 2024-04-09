@@ -20,18 +20,22 @@ app.get("/",function(req,res){
 
 let posts=[
     {
+        id:"1a",
         username:'Sameer',
         content:"Hello"
     },
     {
+        id:"2b",
         username:'Saketh',
         content:"I love coding"
     },
     {
+        id:"3c",
         username:'Sahith',
         content:"Embrace yourself"
     },
     {
+        id:"4b",
         username:'Sakshith',
         content:"Internship acquired"
     },
@@ -50,3 +54,11 @@ app.post("/posts",function(req,res){
     posts.push(req.body);
     res.redirect("/posts");
 });
+
+app.get("/posts/:id",(req,res)=>{
+    let {id}=req.params;
+    console.log(id);
+    if (id in posts.id){
+        res.send("request working");
+    }
+})
