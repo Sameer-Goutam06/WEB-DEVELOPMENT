@@ -90,6 +90,6 @@ app.get("/posts/:id/edit",(req, res)=>{
 //we are filtering that particular post from all posts
 app.delete("/posts/:id",(req, res)=>{
     let {id}=req.params;
-    posts=posts.filter((p)=> id!==p.id);
+    posts=posts.filter((p)=> id!==p.id.toString());
     res.redirect("/posts");
 });
