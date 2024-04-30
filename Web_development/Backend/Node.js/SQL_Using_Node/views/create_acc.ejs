@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create an account</title>
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            
+        }
+        .form-container {
+            text-align: left;
+            width: 350px; /* Set width of the form container */
+        }
+    </style>
+</head>
+<body>
+        <center><h1>Create a new account</h1></center>
+        <div class="container">
+            <form action="/users/new" method="post" class="form-container">
+                <label for="id">Id: </label>
+                <input type="text" name="id" placeholder="Create your id using numbers and alphabets">
+                <br>
+                <br>
+                <label for="username">Username:</label>
+                <input type="text" name="username" placeholder="Create an uniqiue username">
+                <br>
+                <br>
+                <label for="email">Email: </label>
+                <input type="email" name="email" placeholder="Enter your email">
+                <br>
+                <br>
+                <label for="password">Password: </label>
+                <input type="password" name="password" placeholder="Create your new password">
+                <br>
+                <br>
+                <label for="confirm_password">Confirm Password: </label>
+                <input type="password" name="confirm-password" placeholder="Confirm your new password">
+                <br>
+                <br>
+                <button>Submit</button>
+            </form>
+        </div>
+</body>
+</html>

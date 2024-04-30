@@ -5,7 +5,9 @@ const app=express();
 const path=require('path');
 app.set('view engine', 'ejs');
 app.set("views",path.join(__dirname,"/views"));
-
+const methodOverride=require("method-override");
+app.use(methodOverride("_method"));
+app.use(express.urlencoded({extended:true}));
 port=3000;
 
 //establishing exact connection to db
@@ -60,10 +62,85 @@ app.get("/users",(req,res)=>{
 });
 
 //edit route
-app.get("user/:id/edit",(req,res)=>{
-  console.log(req.params.id)
-  res.render("edit.ejs",{id:req.params});
+app.get("/user/:id/edit",(req,res)=>{
+  let q=`select * from user where id='${req.params.id}'`;
+  try{
+    connection.query(q,(err, results)=>{
+      if (err) throw err;
+      let user=(results[0]);
+      console.log(user);
+      res.render("edit.ejs",{user});
+    });
+  }
+  catch(err){
+    console.log(err);
+    res.render("error.ejs");
+  }
 });
+
+//Update DB route
+app.patch("/user/:id",(req,res)=>{
+  let {id}=req.params;
+  const {password:formPass,username:newUsername}=req.body;
+  let q=`select * from user where id='${id}'`;
+  try{
+    connection.query(q,(err, results)=>{
+      if (err) throw err;
+      let user=(results[0]);
+      console.log(user);
+      if ((formPass)!=user.password){
+        res.send("Incorrect password. Please Enter your password correctly");
+      }
+      else{
+        let q2=`Update user set username='${newUsername}' where id='${user.id}'`;
+        connection.query(q2,(err, results)=>{
+          if (err) throw err;
+          res.redirect("/users");
+        });
+      }
+    });
+  }
+  catch(err){
+    console.log(err);
+    res.render("error.ejs");
+  }
+});
+
+//create a new user
+app.get("/users/new",(req,res)=>{
+  res.render("create_acc.ejs");
+});
+
+app.post("/users/new", (req, res)=>{
+  let {id,username,email,password,confirm_password}=req.body;
+  if (password==='' || password!==confirm_password){
+    res.render("error.ejs",{err});
+  }
+  q=`Select * from user  where id='${id}' or username='${username}' or email='${email}'`;
+
+    connection.query(q, (err,results)=>{
+      if(err){
+        res.render("error.ejs",{err:err.message});
+        return;
+      }
+      if (results.length>0){
+        res.send("User with same id or username or email already exists");
+        return;
+      }
+      else{
+        const insertquery=`Insert into user (id,username,email,password) values('${id}','${username}','${email}','${password}');`;
+        connection.query(insertquery, (err,results)=>{
+          if (err){
+            res.render("error.ejs",{err:err.message});
+            return;
+          };
+          res.redirect("/users");
+        });
+      }
+    });
+  }
+);
+
 app.listen(port,()=>{
   console.log('listening on port',port);
 });

@@ -88,8 +88,13 @@ app.get("/posts/:id/edit",(req, res)=>{
 
 //post deleting route
 //we are filtering that particular post from all posts
-app.delete("/posts/:id",(req, res)=>{
-    let {id}=req.params;
-    posts=posts.filter((p)=> id!==p.id.toString());
+app.delete("/posts/:id", (req, res) => {
+    const { id } = req.params;
+    const initialLength = posts.length;
+    posts = posts.filter(p => p.id !== id);
+    if (posts.length === initialLength) {
+        res.status(404).send("Post not found");
+        return;
+    }
     res.redirect("/posts");
 });
