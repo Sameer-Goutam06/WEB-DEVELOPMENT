@@ -27,7 +27,7 @@ let  getRandomUser=()=> {
 //to see tables created
 // let q="Insert into user (id,username,email,password) values ?";
 // let user=[];
-
+``
 //home page
 app.get("/",(req,res)=>{
   q="Select count(*) from user";
@@ -113,11 +113,7 @@ app.get("/users/new",(req,res)=>{
 
 app.post("/users/new", (req, res)=>{
   let {id,username,email,password,confirm_password}=req.body;
-  if (password==='' || password!==confirm_password){
-    res.render("error.ejs",{err});
-  }
   q=`Select * from user  where id='${id}' or username='${username}' or email='${email}'`;
-
     connection.query(q, (err,results)=>{
       if(err){
         res.render("error.ejs",{err:err.message});
@@ -128,18 +124,60 @@ app.post("/users/new", (req, res)=>{
         return;
       }
       else{
-        const insertquery=`Insert into user (id,username,email,password) values('${id}','${username}','${email}','${password}');`;
-        connection.query(insertquery, (err,results)=>{
-          if (err){
-            res.render("error.ejs",{err:err.message});
-            return;
-          };
-          res.redirect("/users");
-        });
+        if (password==='' || password!==confirm_password)
+        {
+          res.render("error.ejs",{err:"Password must not be null and needs to match the confirm password"});
+        }
+        else
+        {
+          const insertquery=`Insert into user (id,username,email,password) values('${id}','${username}','${email}','${password}');`;
+          connection.query(insertquery, (e,results)=>{
+            if (e){
+              res.render("error.ejs",{err:e.message});
+              return;
+            };
+            res.redirect("/users");
+          });
+      }
       }
     });
   }
 );
+
+//Deletion request
+app.get("/user/delete", (req, res)=>{
+  res.render("delete_acc.ejs");
+});
+//Delete data from DB
+app.delete("/user/delete",(req,res)=>{
+  let {email,check_password}=req.body;
+  q=`Select * from user where email='${email}'`;
+  connection.query(q,(error,result)=>{
+    if (error){
+      res.render("error.ejs",{err:error.message});
+      return;
+    }
+    let u=result[0];
+    if (!u){
+      res.render("error.ejs",{err:"user not found"});
+      return;
+    }
+    if (check_password!=u.password){
+      res.render("error.ejs",{err:"Password is incorrect deletion unsuccessful"});
+      return;
+    }
+    else{
+      const delte_q=`Delete from user where email='${email}' and password='${check_password}'`;
+      connection.query(delte_q, (e,results)=>{
+        if (e){
+          res.render("error.ejs",{err:e.message});
+          return;
+        }
+        res.redirect("/");
+      });
+    }
+  });
+});
 
 app.listen(port,()=>{
   console.log('listening on port',port);

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delte account</title>
+    <style>.container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+    }
+    .form-container {
+        text-align: left;
+        width: 350px; /* Set width of the form container */
+    }
+    </style>
+</head>
+<body>
+    <center><h1>Delete account</h1></center>
+        <div class="container">
+            <form action="/user/delete?_method=DELETE" method="post" class="form-container">
+                <label for="email">Email: </label>
+                <input type="email" name="email" placeholder="Enter your email">
+                <br>
+                <br>
+                <label for="password">Password: </label>
+                <input type="password" name="check_password" placeholder="Enter your password">
+                <br>
+                <br>
+                <button>Delete account</button>
+            </form>
+        </div>
+</body>
+</html>
