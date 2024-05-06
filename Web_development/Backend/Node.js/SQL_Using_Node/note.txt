@@ -1,0 +1,8 @@
+Be careful with path creation and you are using a get method to catch a request from an anchor tag or a button but are also using
+        ejs pages for rendering them.
+After rendering them the particular type of method request would be sent by form using a particular path and we need to 
+        catch it using that method.
+
+cd C:\Program Files\MySQL\MySQL Server 8.0\bin
+"mysql -u root -p " to activate mysql cli version
+Dont name error variables and result variables same as older ones in the query method
