@@ -1,2 +1,0 @@
-"mongosh" to open mongoshell
-it is a temporary db space

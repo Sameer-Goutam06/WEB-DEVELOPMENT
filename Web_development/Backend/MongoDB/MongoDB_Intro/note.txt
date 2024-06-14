@@ -1,0 +1,21 @@
+"mongosh" to open mongoshell
+it is a temporary db space
+we need to use mongosh to revert changes to mongoDB
+
+"show dbs" to show the list of all databases
+    Syntax:show dbs
+    
+
+"use" command to use or to shift to a database
+    Syntax: use 'database'
+    example: use college
+
+"show collections" to show all the collections present in a database
+    Syntax: show collections
+    example:database> show collections
+
+Methods of Insertion:
+    1. insertOne():
+        Syntax: db.collection.insertOne({key:"value",key:"value",key:"value"});
+        example: db.student.insertOne()
+    2. insertMany()

@@ -1,0 +1,205 @@
+MongoDB Commands and Examples
+
+==================================
+MongoDB Basics
+==================================
+
+1. Connecting to MongoDB
+------------------------
+mongo
+- Connects to the MongoDB instance running on localhost with default port 27017.
+
+2. Show Databases
+-----------------
+show dbs
+- Lists all databases.
+
+3. Switch/Use Database
+----------------------
+use databaseName
+- Switches to the specified database. If it doesn't exist, MongoDB creates it when you first store data there.
+
+4. Show Collections
+-------------------
+show collections
+- Lists all collections in the current database.
+
+==================================
+CRUD Operations
+==================================
+
+Create
+------
+1. Insert a Single Document
+---------------------------
+db.collectionName.insertOne({
+  key1: "value1",
+  key2: "value2",
+  ...
+})
+- Example:
+db.users.insertOne({ name: "John Doe", age: 30, status: "A" })
+
+2. Insert Multiple Documents
+----------------------------
+db.collectionName.insertMany([
+  { key1: "value1", key2: "value2", ... },
+  { key1: "value1", key2: "value2", ... },
+  ...
+])
+- Example:
+db.users.insertMany([
+  { name: "Jane Doe", age: 25, status: "B" },
+  { name: "Sam Smith", age: 22, status: "A" }
+])
+
+Read
+----
+1. Find All Documents
+---------------------
+db.collectionName.find()
+- Example:
+db.users.find()
+
+2. Find with a Query
+--------------------
+db.collectionName.find({ key: "value" })
+- Example:
+db.users.find({ status: "A" })
+
+3. Find with Projection
+-----------------------
+db.collectionName.find(
+  { key: "value" },
+  { field1: 1, field2: 1, _id: 0 }
+)
+- Example:
+db.users.find({ status: "A" }, { name: 1, age: 1, _id: 0 })
+
+4. Find One Document
+--------------------
+db.collectionName.findOne({ key: "value" })
+- Example:
+db.users.findOne({ name: "John Doe" })
+
+Update
+------
+1. Update a Single Document
+---------------------------
+db.collectionName.updateOne(
+  { key: "value" },
+  { $set: { keyToUpdate: "newValue" } }
+)
+- Example:
+db.users.updateOne(
+  { name: "John Doe" },
+  { $set: { age: 31 } }
+)
+
+2. Update Multiple Documents
+----------------------------
+db.collectionName.updateMany(
+  { key: "value" },
+  { $set: { keyToUpdate: "newValue" } }
+)
+- Example:
+db.users.updateMany(
+  { status: "A" },
+  { $set: { status: "C" } }
+)
+
+3. Replace a Document
+---------------------
+db.collectionName.replaceOne(
+  { key: "value" },
+  { key1: "newValue1", key2: "newValue2", ... }
+)
+- Example:
+db.users.replaceOne(
+  { name: "John Doe" },
+  { name: "Johnathan Doe", age: 31, status: "A" }
+)
+
+Delete
+------
+1. Delete a Single Document
+---------------------------
+db.collectionName.deleteOne({ key: "value" })
+- Example:
+db.users.deleteOne({ name: "John Doe" })
+
+2. Delete Multiple Documents
+----------------------------
+db.collectionName.deleteMany({ key: "value" })
+- Example:
+db.users.deleteMany({ status: "C" })
+
+==================================
+Indexing
+==================================
+
+1. Create an Index
+------------------
+db.collectionName.createIndex({ key: 1 })
+- Example:
+db.users.createIndex({ name: 1 })
+
+2. Create a Unique Index
+------------------------
+db.collectionName.createIndex({ key: 1 }, { unique: true })
+- Example:
+db.users.createIndex({ email: 1 }, { unique: true })
+
+3. Drop an Index
+----------------
+db.collectionName.dropIndex({ key: 1 })
+- Example:
+db.users.dropIndex({ name: 1 })
+
+==================================
+Aggregation
+==================================
+
+1. Basic Aggregation Pipeline
+-----------------------------
+db.collectionName.aggregate([
+  { $match: { key: "value" } },
+  { $group: { _id: "$keyToGroupBy", total: { $sum: "$keyToSum" } } }
+])
+- Example:
+db.sales.aggregate([
+  { $match: { status: "A" } },
+  { $group: { _id: "$item", total: { $sum: "$quantity" } } }
+])
+
+==================================
+Backup and Restore
+==================================
+
+1. Backup a Database
+--------------------
+mongodump --db databaseName --out /path/to/backup/
+
+2. Restore a Database
+---------------------
+mongorestore --db databaseName /path/to/backup/databaseName
+
+==================================
+Miscellaneous
+==================================
+
+1. Get Collection Stats
+-----------------------
+db.collectionName.stats()
+- Example:
+db.users.stats()
+
+2. Drop a Collection
+--------------------
+db.collectionName.drop()
+- Example:
+db.users.drop()
+
+3. Drop a Database
+------------------
+db.dropDatabase()
