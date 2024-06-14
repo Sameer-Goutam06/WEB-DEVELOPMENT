@@ -1,0 +1,63 @@
+college> db.students.find({name:"sameer"});
+[
+  {
+    _id: ObjectId('666c86f1b9ce2ed66346b799'),
+    name: 'sameer',
+    age: 18
+  }
+]
+college> db.students.find({age:{$lt:20}});
+[
+  {
+    _id: ObjectId('666c86f1b9ce2ed66346b799'),
+    name: 'sameer',
+    age: 18
+  },
+  { _id: ObjectId('666c8782b9ce2ed66346b79b'), name: 'balu', age: 19 }
+]
+college> db.students.updateOne({name:"sameer"},{age:{$set:19}});
+MongoInvalidArgumentError: Update document requires atomic operators
+college> db.students.updateOne({name:"sameer"},{$set:{age:19}});
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+college> db.students.find();
+[
+  {
+    _id: ObjectId('666c86f1b9ce2ed66346b799'),
+    name: 'sameer',
+    age: 19
+  },
+  {
+    _id: ObjectId('666c8782b9ce2ed66346b79a'),
+    name: 'arshad',
+    age: 20
+  },
+  { _id: ObjectId('666c8782b9ce2ed66346b79b'), name: 'balu', age: 19 }
+]
+college> db.students.updateMany({age:19},{$set:{age:18}});
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 2,
+  modifiedCount: 2,
+  upsertedCount: 0
+}
+college> db.students.find();
+[
+  {
+    _id: ObjectId('666c86f1b9ce2ed66346b799'),
+    name: 'sameer',
+    age: 18
+  },
+  {
+    _id: ObjectId('666c8782b9ce2ed66346b79a'),
+    name: 'arshad',
+    age: 20
+  },
+  { _id: ObjectId('666c8782b9ce2ed66346b79b'), name: 'balu', age: 18 }
+]
