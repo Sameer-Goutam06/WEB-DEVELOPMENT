@@ -2,7 +2,7 @@ const express= require('express');
 const app = express();
 //to set path even outside the ejs directory to run app globally
 const path= require('path');
-const port=8080;
+const port=6000;
 
 //we need to create a folder nameed public to serve static files such as html,css,ejs..
 app.use(express.static(path.join(__dirname,"/public/css")));
@@ -48,11 +48,13 @@ app.get('/ig/:username',(req,res)=>{
     let {username}=req.params;//we need to use the same parameter passed as an request to check inside the json file
     // let followers=["Sameer","Sahith","Sakshith"];
     // res.render("ig.ejs",{Username:uname,Followers:followers});
-    if (username in instadata){
+    if (username in instadata)
+    {
         const data=instadata[username];
         res.render('ig.ejs',{data});
     }
-    else{
+    else
+    {
         res.render("error.ejs");
     }
 });
