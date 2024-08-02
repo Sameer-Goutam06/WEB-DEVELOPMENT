@@ -21,3 +21,4 @@ a npm package or library used for Authentcation and has several models for authe
  in WanderLust we are using 
  passport
  passport-local
+ passport-local-mongoose
