@@ -1,0 +1,26 @@
+-------Stateful Protocol------
+Server needs to save the status and session information
+ex: once a user is logged in a website each and every functionality being used is tracked under user's login credentials no matter where you are. or logs of requests to apis.
+eg:ftp
+
+--------Stateless Protocol-----
+Server need not to save info about logs or session information
+eg:http
+
+Express session- an attempt to make our session Stateful
+//npm i express-session
+
+
+------connect-flash--------
+The flash is a special area of the session used for storing messages. messages are written to the flash and cleared after being displayed to the user.
+it is an npm package
+we need to add triggers with conditions for flashing the alerts
+they are helpful to indicate both success and errors
+it is a type of middleware used to store messages and used generally with redirects
+
+sessions packages are must for implementing flash messages (Express-session);
+eg: alert messages displayed indicating the state of completion of a performed task like creation,editing,deletion
+
+
+------res.locals-------
+if we want to save some parameters received by middlewares we can use res.locals which acts as a js object to store key-value pairs data in it.
