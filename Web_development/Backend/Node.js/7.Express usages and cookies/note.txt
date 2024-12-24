@@ -1,0 +1,7 @@
+refer to express routing in WanderLust delta 2.0 or express.js website
+always use mergeParams to merge the parameters while routing.
+
+
+cookies is a small amount of data stored or passed by browser.
+it is used for retreival of data sometimes and for other purposes too.
+cookies can be passed using res.cookie("Key","value")

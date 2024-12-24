@@ -1,0 +1,24 @@
+---- Authentication and Authorization ----
+Authentcation is the process of verifying who we are
+Authorization is the process of verfying which resources a user has access to
+
+------Storing Passwords------
+We never store passwords as it is. We store their hashed form
+Hashing function modifies the password into a clumsy string which cannot be identified easily
+
+--note about hashing function
+for every input there is a fixed output.
+They are one way functions, we can't get input from output.
+different inputs bring different output, but of same length.
+small changes in input brings large changes in output.
+
+-----Salting-----
+Salting is a technique to protect passwords stored in databases by adding a string of 32 or more characters and then hashing them.
+
+-----passport.js---
+express compatible middleware authentication for node.js
+a npm package or library used for Authentcation and has several models for authentication purposes like facebook, google, linkedin, github etc.
+ in WanderLust we are using 
+ passport
+ passport-local
+ passport-local-mongoose
