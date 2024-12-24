@@ -1,0 +1,5 @@
+To run typescript install this
+"npm i typescript -g" 
+
+You cannot directly run a .ts file with typescript you need to convert it to .js file
+"tsc filename.ts"
