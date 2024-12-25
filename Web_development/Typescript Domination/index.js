@@ -67,7 +67,7 @@ var Mixed;
     Mixed["Yes"] = "YES";
     Mixed[Mixed["No"] = 0] = "No";
 })(Mixed || (Mixed = {}));
-console.log(Mixed); //{Yes = "YES",No = 0}
+console.log(Mixed); //{'0': 'No',Yes = "YES",No = 0}
 //If you don’t assign values to string enums, you’ll get a TypeScript error because string enums require explicit values.
 var Colors1;
 (function (Colors1) {
@@ -82,3 +82,21 @@ var Colors2;
     Colors2["Green"] = "Green";
     Colors2["Blue"] = "Blue";
 })(Colors2 || (Colors2 = {}));
+//ANY datatype
+//The any type in TypeScript allows a variable to hold values of any type. 
+//It effectively disables TypeScript's type checking for that variable, making it behave like plain JavaScript.
+var data = 5;
+console.log("data using any datatype: " + data);
+data = "Hello";
+console.log("data using any datatype: " + data);
+data = true;
+console.log("data using any datatype: " + data);
+//error messages while performing type related functions would be given at run time of javascript not at compile time of typeScript
+data = "Hello";
+//console.log(data.toFixed(2)); // No error at compile time, runtime error!
+//any allows unrestricted access to any properties or methods, leading to potential runtime errors.
+//Implicit any: If TypeScript cannot infer a type and noImplicitAny is disabled, variables default to any.
+function add(x, y) {
+    return x + y; // x and y are implicitly `any`
+}
+console.log(add(1, "Hello"));

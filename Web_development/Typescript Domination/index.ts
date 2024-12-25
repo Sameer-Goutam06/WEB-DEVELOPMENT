@@ -88,4 +88,30 @@ enum Colors2 {
     Red = "Red",
     Green = "Green",
     Blue = "Blue"
-    }
+}
+
+
+//ANY datatype
+//The any type in TypeScript allows a variable to hold values of any type. 
+//It effectively disables TypeScript's type checking for that variable, making it behave like plain JavaScript.
+let data:any=5;
+console.log("data using any datatype: "+data);
+data="Hello";
+console.log("data using any datatype: "+data);
+data=true;
+console.log("data using any datatype: "+data);
+
+//error messages while performing type related functions would be given at run time of javascript not at compile time of typeScript
+data="Hello";
+//console.log(data.toFixed(2)); // No error at compile time, runtime error!
+//any allows unrestricted access to any properties or methods, leading to potential runtime errors.
+//Implicit any: If TypeScript cannot infer a type and noImplicitAny is disabled, variables default to any.
+function add(x:any, y:any) {
+    return x + y; // x and y are implicitly `any`
+}
+
+
+//UNKNOWN TYPE
+//The unknown type in TypeScript is similar to any, but it’s safer.
+//The unknown type in TypeScript is a safer alternative to any and represents a value that could be of any type. 
+// However, unlike any, you must narrow down the type using type checks before performing operations on it.
