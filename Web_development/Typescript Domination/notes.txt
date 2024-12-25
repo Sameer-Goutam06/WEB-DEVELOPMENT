@@ -3,3 +3,19 @@ To run typescript install this
 
 You cannot directly run a .ts file with typescript you need to convert it to .js file
 "tsc filename.ts"
+
+Configuring tsconfig.json
+"tsc --init" or "npx tsc --init"
+it creates the tsconfig.json file and you can edit it manually
+
+if errors are being reported in ts files, then exclude ts files checking js files using the below things:
+{
+  "exclude": ["*.js"]
+}
+OR
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": false
+  }
+}
