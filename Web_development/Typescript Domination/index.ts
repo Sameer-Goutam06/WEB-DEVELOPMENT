@@ -115,3 +115,47 @@ function add(x:any, y:any) {
 //The unknown type in TypeScript is similar to any, but it’s safer.
 //The unknown type in TypeScript is a safer alternative to any and represents a value that could be of any type. 
 // However, unlike any, you must narrow down the type using type checks before performing operations on it.
+//Usecaes are like  When you receive data from an external source (like an API, user input, or dynamic content), its type is uncertain. 
+// unknown is useful in this context, as you can first check the type and handle the value accordingly.
+let value: unknown = "Hello";
+
+//Strict Type Checking
+//console.log(value.length); // Error: Object is of type 'unknown'
+
+// Type narrowing with typeof
+if (typeof value === "string") {
+    console.log(value.length); // Safe, as TypeScript knows it's a string
+}
+
+//Type Narrowing
+//To access the properties of an unknown type, TypeScript needs to know what type the value is.
+//Type narrowing is a way to tell TypeScript what type a value is, so it can safely access the variable.
+function processValue(value: unknown) {
+    if (typeof value === "string") {
+        // `value` is now treated as a string inside this block
+        console.log(value.toUpperCase());
+    } else if (typeof value === "number") {
+        // `value` is treated as a number inside this block
+        console.log(value.toFixed(2));
+    }
+}
+
+//Cannot be Assigned to Other Types Directly
+//The unknown type cannot be assigned to other types directly. It must be narrowed down first.
+let value1: unknown = 10;
+let num: number;
+//num = value1; // Error: Type 'unknown' is not assignable to type 'number'
+
+// Correct way: Narrow the type first or assert type
+if (typeof value === "number") {
+    num = value; // Safe assignment
+}
+
+//Cannot Be Used in Operations Directly
+//The unknown type cannot be used in operations directly. It must be narrowed down first.
+let value2: unknown = 10;
+//console.log(value2 + 5); // Error: Object is of type 'unknown'
+// Correct way: Narrow the type first or assert type
+if (typeof value === "number") {
+    console.log(value + 5); // Safe operation
+}
