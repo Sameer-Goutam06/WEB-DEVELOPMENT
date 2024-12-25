@@ -6,6 +6,7 @@ var y = 20;
 //let y: number given by ts compiler itself
 console.log(y);
 //primitive types(number, string,boolean,array)
+//ARRAYS
 //arrays in typescript can store more than 2 datatype values
 //array data types would be declared itself if we don't declare it explicitly
 var arr1 = [1, 2, 3, "sameer"];
@@ -16,3 +17,68 @@ var arr3 = [1, 2, 3, "sameer"];
 //we can even declare JSON data types in arrays explicitly and give the structure 
 var arr4 = [1, 2, 3, { name: "abc" }];
 console.log(arr1, arr2, arr3, arr4);
+//TUPLES
+//tuples are declared in typescript and they are declared same as arrays but with a different structure
+//data types of values inside a tuple are declared beforehand for each and every value inside the tuple
+//it is immutable and we cannot remove or add new values inside tuples after decalration
+var tuple1 = [1, "sameer"];
+var tuple11 = [1, 2, 3, "hello"];
+//we can declare two or more data types in a tuple explicitly
+var tuple2 = [1, "sameer", true];
+//we can even declare JSON data types in tuples explicitly and give the structure
+var tuple3 = [1, { name: "sameer" }, 'sameer'];
+console.log(tuple1[0]); //1
+console.log(tuple2); //[1,"sameer",true]
+//ENUMS OR ENUMERATION
+//looks similar to a JSON object but with some properties and differences
+//we can declare enums in typescript and they are declared with the keyword enum
+//The primary datatypes of enums in numbers
+//but we can declare any datatype based values in enums
+var Direction1;
+(function (Direction1) {
+    Direction1["Up"] = "UP";
+    Direction1["Down"] = "DOWN";
+    Direction1["Left"] = "LEFT";
+    Direction1["Right"] = "RIGHT";
+})(Direction1 || (Direction1 = {}));
+console.log(Direction1.Up); // "UP"
+//enums are automatically assigned to numeric values if they are not specified
+//the first enum value will be used as the starting value and the others would  be incremented from there
+//The first value would be assigned as 0 if unassigned
+var Direction2;
+(function (Direction2) {
+    Direction2[Direction2["Up"] = 0] = "Up";
+    Direction2[Direction2["Down"] = 1] = "Down";
+    Direction2[Direction2["Left"] = 2] = "Left";
+    Direction2[Direction2["Right"] = 3] = "Right"; // 3
+})(Direction2 || (Direction2 = {}));
+console.log(Direction2.Up); // 0
+//partial enum assignment
+var Status;
+(function (Status) {
+    Status[Status["Active"] = 1] = "Active";
+    Status[Status["Inactive"] = 2] = "Inactive";
+    Status[Status["Pending"] = 3] = "Pending"; // 3 (incremented from 2)
+})(Status || (Status = {}));
+console.log(Status.Inactive); // 2
+//combined datatype values based enums
+var Mixed;
+(function (Mixed) {
+    Mixed["Yes"] = "YES";
+    Mixed[Mixed["No"] = 0] = "No";
+})(Mixed || (Mixed = {}));
+console.log(Mixed); //{Yes = "YES",No = 0}
+//If you don’t assign values to string enums, you’ll get a TypeScript error because string enums require explicit values.
+var Colors1;
+(function (Colors1) {
+    Colors1["Red"] = "Red";
+    //Green, // Error: Enum member must have an initializer.
+    //Blue  // Error: Enum member must have an initializer.
+})(Colors1 || (Colors1 = {}));
+//To fix the error, you can assign a value to the enum members, like this:
+var Colors2;
+(function (Colors2) {
+    Colors2["Red"] = "Red";
+    Colors2["Green"] = "Green";
+    Colors2["Blue"] = "Blue";
+})(Colors2 || (Colors2 = {}));

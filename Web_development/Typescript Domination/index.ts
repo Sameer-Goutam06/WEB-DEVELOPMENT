@@ -39,13 +39,14 @@ console.log(tuple2); //[1,"sameer",true]
 //ENUMS OR ENUMERATION
 //looks similar to a JSON object but with some properties and differences
 //we can declare enums in typescript and they are declared with the keyword enum
+//The primary datatypes of enums in numbers
+//but we can declare any datatype based values in enums
 enum Direction1 {
     Up = "UP",
     Down = "DOWN",
     Left = "LEFT",
     Right = "RIGHT"
 }
-
 console.log(Direction1.Up); // "UP"
 
 //enums are automatically assigned to numeric values if they are not specified
@@ -57,5 +58,34 @@ enum Direction2 {
     Left,    // 2
     Right    // 3
 }
-
 console.log(Direction2.Up); // 0
+
+//partial enum assignment
+enum Status {
+    Active = 1,   // Explicit value
+    Inactive,     // 2 (incremented from 1)
+    Pending       // 3 (incremented from 2)
+}
+console.log(Status.Inactive); // 2
+
+//combined datatype values based enums
+enum Mixed {
+    Yes = "YES",
+    No = 0
+}
+console.log(Mixed); //{'0': 'No',Yes = "YES",No = 0}
+
+//If you don’t assign values to string enums, you’ll get a TypeScript error because string enums require explicit values.
+
+enum Colors1 {
+    Red = "Red",
+    //Green, // Error: Enum member must have an initializer.
+    //Blue  // Error: Enum member must have an initializer.
+}
+
+//To fix the error, you can assign a value to the enum members, like this:
+enum Colors2 {
+    Red = "Red",
+    Green = "Green",
+    Blue = "Blue"
+    }
