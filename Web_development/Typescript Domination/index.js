@@ -15,4 +15,4 @@ var arr2 = [1, 2, 3, { name: "sameer", class: "json" }];
 var arr3 = [1, 2, 3, "sameer"];
 //we can even declare JSON data types in arrays explicitly and give the structure 
 var arr4 = [1, 2, 3, { name: "abc" }];
-console.log(arr1, arr2, arr3, typeof (arr4));
+console.log(arr1, arr2, arr3, arr4);
