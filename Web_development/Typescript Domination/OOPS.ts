@@ -22,10 +22,10 @@ interface Greet {
 
 const greet2: Greet = (name) => `Hello, ${name}`;
 // Extending interfaces
-interface Person {
+interface PersonInterface {
     name: string;
 }
-interface Employee extends Person {
+interface Employee extends PersonInterface {
     employeeId: number;
 }
 // Implementing interfaces in a class
@@ -51,3 +51,53 @@ interface NumberDictionary {
     [index: string]: number;
 }
 const ages: NumberDictionary = { alice: 30, bob: 40 };
+
+//classes in TS
+// Class Declaration
+class PersonClass {
+  name: string;
+  constructor(name: string) {
+    this.name = name;
+  }
+  greet() {
+    console.log(`Hello, ${this.name}`);
+  }
+}
+// Creating an object
+const person1 = new PersonClass("Sameer");
+person1.greet(); // "Hello, Sameer"
+// Inheritance Example
+class Employee extends PersonClass {
+  role: string;
+  constructor(name: string, role: string) {
+    super(name);
+    this.role = role;
+  }
+  displayRole() {
+    console.log(`${this.name} is a ${this.role}`);
+  }
+}
+const employee1 = new Employee("Sameer", "Developer");
+employee1.displayRole(); // "Sameer is a Developer"
+
+//Access Modifiers in TS
+class Example {
+    public a: number; // Default
+    private b: number; // Restricted to this class
+    protected c: number; // Accessible to subclasses
+    constructor(a: number, b: number, c: number) {
+        this.a = a;
+        this.b = b;
+        this.c = c;
+    }
+}
+const example = new Example(10,20,30);
+
+//Inheritance in TS
+class EmployeeClass extends PersonClass {
+    employeeId: number;
+    constructor(name: string, employeeId: number) {
+        super(name); // Call parent constructor
+        this.employeeId = employeeId;
+    }
+}

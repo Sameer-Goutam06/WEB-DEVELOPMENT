@@ -282,9 +282,9 @@ let user3: User2 = { name: "Sameer" };
 type StatusNow = "success" | "error" | "loading";
 let currentStatus: StatusNow = "success";
 //Intersection Types
-type person = { name: string };
-type employee = Person & { id: number };
-let emp: employee = { name: "John", id: 1 };
+type Person = { name: string };
+type employee3 = Person & { id: number };
+let emp: employee3 = { name: "John", id: 1 };
 //Function Types
 type GreetNow = (name: string) => string;
 const greetNow: GreetNow = (name) => `Hello, ${name}`;
