@@ -6,6 +6,19 @@ let y=20;
 //let y: number given by ts compiler itself
 console.log(y);
 
+
+// Union Type: Allows a value to be any one of the specified types
+type ID2 = string | number;
+
+let userId1: ID2 = 123; // Can be a string or a number
+userId1 = "abc";       // Also valid
+
+// Intersection Type: Requires a value to satisfy all specified types
+type Person1 = { name: string };
+type Employee2 = Person1 & { employeeId: number };
+
+let employee: Employee2 = { name: "Sameer", employeeId: 101 }; // Must satisfy both Person and Employee
+
 //primitive types(number, string,boolean,array)
 
 
@@ -145,12 +158,10 @@ function processValue(value: unknown) {
 let value1: unknown = 10;
 let num: number;
 //num = value1; // Error: Type 'unknown' is not assignable to type 'number'
-
 // Correct way: Narrow the type first or assert type
 if (typeof value === "number") {
     num = value; // Safe assignment
 }
-
 //Cannot Be Used in Operations Directly
 //The unknown type cannot be used in operations directly. It must be narrowed down first.
 let value2: unknown = 10;
@@ -234,11 +245,6 @@ let add2: (x: number, y: number) => number = (x, y) => x + y; // Function type a
 function greetWithAge(name: string, age?: number): string {
     return `Hello, ${name}${age ? `, Age: ${age}` : ''}`;
 }
-// Benefits of Type Annotations
-// 1. Catch errors early (compile-time checks)
-// 2. Improves readability and understanding of code
-// 3. Provides better tooling and autocompletion support
-// 4. Makes refactoring safer and easier
 
 // Type Inference in TypeScript
 // TypeScript automatically infers the type based on the assigned value.
@@ -258,3 +264,27 @@ let uninitialized;  // inferred as any
 // 1. Reduces code verbosity.
 // 2. Maintains type safety.
 // 3. Improves IDE support with autocompletion.
+
+
+//Type Aliases in TypeScript
+//Type aliases are used to give a new name to an existing type.
+//syntax: type AliasName = Type;
+//Primitive Type Aliases
+type ID = string | number;
+let userId: ID = 123; // Valid
+//Object Types
+type User2 = {
+    name: string;
+    age?: number; // Optional property
+};
+let user3: User2 = { name: "Sameer" };
+//Union Types
+type StatusNow = "success" | "error" | "loading";
+let currentStatus: StatusNow = "success";
+//Intersection Types
+type person = { name: string };
+type employee = Person & { id: number };
+let emp: employee = { name: "John", id: 1 };
+//Function Types
+type GreetNow = (name: string) => string;
+const greetNow: GreetNow = (name) => `Hello, ${name}`;

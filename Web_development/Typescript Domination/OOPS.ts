@@ -15,6 +15,11 @@ let user1: User = { name: "Sameer", id: 1 };
 interface Greet {
     (name: string): string;//(name:string) is function parameter and then :string is return type parameter
 }
+// Differences between extending and implementing interfaces:
+// 1. Extending combines interfaces; implementing enforces structure in classes.
+// 2. Extending applies only to interfaces; implementing applies to classes.
+// 3. Extending inherits properties/methods; implementing requires definitions in the class.
+
 const greet2: Greet = (name) => `Hello, ${name}`;
 // Extending interfaces
 interface Person {
@@ -36,3 +41,13 @@ class Circle implements Shape {
         return Math.PI * this.radius ** 2;
     }
 }
+// Interface for an array type
+interface StringArray {
+    [index: number]: string;
+}
+const names: StringArray = ["Alice", "Bob"];
+// Interface for a dictionary type
+interface NumberDictionary {
+    [index: string]: number;
+}
+const ages: NumberDictionary = { alice: 30, bob: 40 };
