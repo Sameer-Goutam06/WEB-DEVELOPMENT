@@ -161,66 +161,52 @@ if (typeof value === "number") {
 }
 
 // null type in TypeScript
-
 // The null type represents the absence of a value or the intentional lack of any object.
 // It's used to explicitly denote that a variable has no value assigned.
-
 // Example of `null` type:
 let value3: null = null; // Explicitly set to null
-
 // Difference between `null` and `undefined`
 // `null` represents the intentional absence of a value,
 // whereas `undefined` means a variable has been declared but not yet assigned a value.
 let a: null = null;  // Intentional no value
 let b: undefined;    // Uninitialized
-
 // Strict Null Checks
 // When strictNullChecks is enabled in tsconfig.json, `null` is not assignable to any other types unless explicitly allowed.
 //let str: string = null; // Error: Type 'null' is not assignable to type 'string'
-
 // Assigning `null` to Nullable Types
 // You can assign `null` to variables whose types explicitly include `null`.
 let user: { name: string, age: number } | null = null; // No user found
-
 // Use cases for `null`
 // 1. Representing Missing Data
 let userInfo: { name: string, age: number } | null = null; // No data available
-
 // 2. Function Returning No Value
 function findUser(id: number): { name: string, age: number } | null {
   return null; // No user found
 }
-
 // 3. Optional Values
 let result: number | null = null; // Value can be missing
 
 
 // void type in TypeScript
-
 // The `void` type represents the absence of a return value in functions.
 // It is used to define functions that do not return anything.
-
 // Example of `void` type:
 function logMessage(message: string): void {
   console.log(message); // No return value
 }
-
 // Difference between `void` and `undefined`
 // `void` is used to define functions that do not return a value,
 // while `undefined` is the actual value that functions return if no return statement is provided.
 function example1(): void {
   // Function that does not return anything
 }
-
 function example2(): undefined {
   return undefined; // Explicit return of undefined
 }
-
 // Can be Used for Variables
 // `void` is used to indicate a function that does not return anything.
 // You can assign `void` to a function type variable in some cases.
 let myFunction: () => void = () => { console.log("Hello!"); };
-
 // Use cases for `void`
 // 1. Functions That Don’t Return Values
 function printMessage(message: string): void {
@@ -234,28 +220,41 @@ function printMessage(message: string): void {
 let name1: string = "John";      // `name` must be a string
 let age: number = 25;           // `age` must be a number
 let isActive: boolean = true;   // `isActive` must be a boolean
-
 // Array Type Annotations
 let numbers: number[] = [1, 2, 3];  // Array of numbers
 let strings: Array<string> = ["a", "b", "c"];  // Array of strings
-
 // Object Type Annotations
 let person: { name: string, age: number } = { name: "Alice", age: 30 };
-
 // Function Type Annotations
 function greet(name: string): string {
     return "Hello, " + name; // Function returns a string
 }
-
 let add2: (x: number, y: number) => number = (x, y) => x + y; // Function type annotation
-
 // Optional Parameters
 function greetWithAge(name: string, age?: number): string {
     return `Hello, ${name}${age ? `, Age: ${age}` : ''}`;
 }
-
 // Benefits of Type Annotations
 // 1. Catch errors early (compile-time checks)
 // 2. Improves readability and understanding of code
 // 3. Provides better tooling and autocompletion support
 // 4. Makes refactoring safer and easier
+
+// Type Inference in TypeScript
+// TypeScript automatically infers the type based on the assigned value.
+// Examples:
+let name2 = "John";   // inferred as string
+let age2 = 25;        // inferred as number
+let isActive1 = true; // inferred as boolean
+// Function return type inference:
+function add3(a: number, b: number) {
+    return a + b; // inferred as number
+}
+// Array type inference:
+let numbers1 = [1, 2, 3]; // inferred as number[]
+// When inference doesn't work:
+let uninitialized;  // inferred as any
+// Benefits:
+// 1. Reduces code verbosity.
+// 2. Maintains type safety.
+// 3. Improves IDE support with autocompletion.

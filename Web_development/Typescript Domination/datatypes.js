@@ -142,3 +142,96 @@ var value2 = 10;
 if (typeof value === "number") {
     console.log(value + 5); // Safe operation
 }
+// null type in TypeScript
+// The null type represents the absence of a value or the intentional lack of any object.
+// It's used to explicitly denote that a variable has no value assigned.
+// Example of `null` type:
+var value3 = null; // Explicitly set to null
+// Difference between `null` and `undefined`
+// `null` represents the intentional absence of a value,
+// whereas `undefined` means a variable has been declared but not yet assigned a value.
+var a = null; // Intentional no value
+var b; // Uninitialized
+// Strict Null Checks
+// When strictNullChecks is enabled in tsconfig.json, `null` is not assignable to any other types unless explicitly allowed.
+//let str: string = null; // Error: Type 'null' is not assignable to type 'string'
+// Assigning `null` to Nullable Types
+// You can assign `null` to variables whose types explicitly include `null`.
+var user = null; // No user found
+// Use cases for `null`
+// 1. Representing Missing Data
+var userInfo = null; // No data available
+// 2. Function Returning No Value
+function findUser(id) {
+    return null; // No user found
+}
+// 3. Optional Values
+var result = null; // Value can be missing
+// void type in TypeScript
+// The `void` type represents the absence of a return value in functions.
+// It is used to define functions that do not return anything.
+// Example of `void` type:
+function logMessage(message) {
+    console.log(message); // No return value
+}
+// Difference between `void` and `undefined`
+// `void` is used to define functions that do not return a value,
+// while `undefined` is the actual value that functions return if no return statement is provided.
+function example1() {
+    // Function that does not return anything
+}
+function example2() {
+    return undefined; // Explicit return of undefined
+}
+// Can be Used for Variables
+// `void` is used to indicate a function that does not return anything.
+// You can assign `void` to a function type variable in some cases.
+var myFunction = function () { console.log("Hello!"); };
+// Use cases for `void`
+// 1. Functions That Don’t Return Values
+function printMessage(message) {
+    console.log(message); // Logs message but doesn't return anything
+}
+// Type Annotations in TypeScript
+// Type annotations explicitly define the type of a variable, function parameter, or return value in TypeScript.
+// Variable Type Annotations
+var name1 = "John"; // `name` must be a string
+var age = 25; // `age` must be a number
+var isActive = true; // `isActive` must be a boolean
+// Array Type Annotations
+var numbers = [1, 2, 3]; // Array of numbers
+var strings = ["a", "b", "c"]; // Array of strings
+// Object Type Annotations
+var person = { name: "Alice", age: 30 };
+// Function Type Annotations
+function greet(name) {
+    return "Hello, " + name; // Function returns a string
+}
+var add2 = function (x, y) { return x + y; }; // Function type annotation
+// Optional Parameters
+function greetWithAge(name, age) {
+    return "Hello, ".concat(name).concat(age ? ", Age: ".concat(age) : '');
+}
+// Benefits of Type Annotations
+// 1. Catch errors early (compile-time checks)
+// 2. Improves readability and understanding of code
+// 3. Provides better tooling and autocompletion support
+// 4. Makes refactoring safer and easier
+// Type Inference in TypeScript
+// TypeScript automatically infers the type based on the assigned value.
+// Examples:
+var name2 = "John"; // inferred as string
+var age2 = 25; // inferred as number
+var isActive1 = true; // inferred as boolean
+// Function return type inference:
+function add3(a, b) {
+    return a + b; // inferred as number
+}
+// Array type inference:
+var numbers1 = [1, 2, 3]; // inferred as number[]
+// When inference doesn't work:
+var uninitialized; // inferred as any
+// Benefits:
+// 1. Reduces code verbosity.
+// 2. Maintains type safety.
+// 3. Improves IDE support with autocompletion.
