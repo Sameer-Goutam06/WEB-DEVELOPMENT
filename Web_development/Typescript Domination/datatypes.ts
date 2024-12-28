@@ -309,5 +309,67 @@ console.log(inputElement.value); // Output: TypeScript is great!
 
 // Example 4: Incorrect Type Assertion
 let incorrectValue: any = "Hello, World!";
-let numberValue: number = <number>incorrectValue; // This will cause an error at runtime (NaN)
-console.log(numberValue); // Output: NaN
+// let numberValue: number = <number>incorrectValue; // This will cause an error at runtime (NaN)
+// console.log(numberValue); // Output: NaN
+
+
+//Type Guards in TypeScript
+//Type Guards in TypeScript are used to narrow down the type of a variable within a conditional block.
+//They help TypeScript understand the type of a variable and provide type safety during runtime.
+//Example 1: typeof Type Guard
+function printLength(value: string | number) {
+    if (typeof value === "string") {
+      console.log(value.length); // TypeScript knows value is a string here
+    } else {
+      console.log(value.toFixed(2)); // TypeScript knows value is a number here
+    }
+}
+
+printLength("Hello, TypeScript!"); // Output: 19
+printLength(42); // Output: 42.00
+
+//Example 2: instanceof Type Guard
+//The instanceof operator can be used to check if an object is an instance of a particular class or constructor function.
+class Dog {
+    bark() {
+      console.log("Woof!");
+    }
+}  
+class Cat {
+    meow() {
+      console.log("Meow!");
+    }
+}
+function makeSound(animal: Dog | Cat) {
+    if (animal instanceof Dog) {
+      animal.bark(); // TypeScript knows animal is a Dog here
+    } else {
+      animal.meow(); // TypeScript knows animal is a Cat here
+    }
+}
+const dog = new Dog();
+const cat = new Cat();
+makeSound(dog); // Output: Woof!
+makeSound(cat); // Output: Meow!
+
+//Custom type guard function
+interface Car {
+    drive(): void;
+} 
+interface Truck {
+    loadCargo(): void;
+}
+function isTruck(vehicle: Car | Truck): vehicle is Truck {
+    return (vehicle as Truck).loadCargo !== undefined;
+}
+function operate(vehicle: Car | Truck) {
+    if (isTruck(vehicle)) {
+      vehicle.loadCargo();  // TypeScript knows vehicle is a Truck
+    } else {
+      vehicle.drive();  // TypeScript knows vehicle is a Car
+    }
+}
+const myCar: Car = { drive() { console.log("Driving..."); } };
+const myTruck: Truck = { loadCargo() { console.log("Loading cargo..."); } };
+operate(myCar);  // Output: Driving...
+operate(myTruck);  // Output: Loading cargo...
