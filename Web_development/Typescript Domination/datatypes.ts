@@ -288,3 +288,26 @@ let emp: employee3 = { name: "John", id: 1 };
 //Function Types
 type GreetNow = (name: string) => string;
 const greetNow: GreetNow = (name) => `Hello, ${name}`;
+
+//Type Assertion in TypeScript
+//Type Assertions in TypeScript allow you to tell the compiler to treat a value as a specific type, bypassing certain type checks.
+// It's a way to inform TypeScript about the type of a variable when you're sure of its type, but the compiler cannot infer it automatically.
+// Example 1: Basic Type Assertion using Angle Bracket Syntax
+let someValue: any = "Hello, TypeScript!";
+let strLength: number = (<string>someValue).length;
+console.log(strLength); // Output: 17
+
+// Example 2: Type Assertion using 'as' Syntax (Recommended)
+let anotherValue: any = 42;
+let numValue: number = (anotherValue as number);
+console.log(numValue); // Output: 42
+
+// Example 3: Type Assertion with DOM Elements
+let inputElement = document.getElementById("myInput") as HTMLInputElement;
+inputElement.value = "TypeScript is great!";
+console.log(inputElement.value); // Output: TypeScript is great!
+
+// Example 4: Incorrect Type Assertion
+let incorrectValue: any = "Hello, World!";
+let numberValue: number = <number>incorrectValue; // This will cause an error at runtime (NaN)
+console.log(numberValue); // Output: NaN

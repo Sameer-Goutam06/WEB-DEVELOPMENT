@@ -108,7 +108,6 @@ class PersonReadOnly {
     readonly name: string;//a variable in TS class is public by default
     constructor(name: string) {
       this.name = name;
-      throw new Error("person read only");
     }
 }
 const personReadOnly = new PersonReadOnly("Sameer");
