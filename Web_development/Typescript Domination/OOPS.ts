@@ -208,3 +208,10 @@ console.log(stringArray); // Output: ["a", "b", "c", "d"]
 // Trying to merge arrays of different types
 //const mixedArray = mergeArrays([1, 2, 3], ["a", "b", "c"]); // Error: Type 'string' is not assignable to type 'number'
 //console.log(mixedArray); // This will cause a compile-time error
+
+
+//Importing in TS
+// Importing the function
+import { add } from './mathUtils';
+const result = add(5, 3);
+console.log(result);  // Output: 8
