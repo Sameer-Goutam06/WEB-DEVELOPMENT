@@ -73,3 +73,22 @@ File Permissions: Git tracks file permission changes (e.g., making a file execut
 Folder Recognition: Git doesn’t track empty folders. Use a placeholder file like .gitkeep to track empty folders.
 Remote Permissions: Permissions for executable files are preserved when pushed to remote repos like GitHub.
 
+
+Understanding Git Concepts and Commands:
+Git Basics: Git tracks file changes and maintains project history.
+Common Commands:
+git init: Initialize a repo.
+git status: Check changes.
+git add <file>: Stage files.
+git commit -m "message": Save changes.
+git push: Upload changes to remote.
+git pull: Fetch changes from remote.
+git log: View commit history.
+
+
+Understanding Git Status and File Tracking:
+git status: Shows the state of files in your project (untracked, modified, staged).
+File Tracking:
+Untracked: New files Git isn’t tracking.
+Modified: Changed files not staged.
+Staged: Files ready for commit.
