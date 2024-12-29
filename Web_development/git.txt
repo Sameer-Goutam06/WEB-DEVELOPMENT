@@ -92,3 +92,33 @@ File Tracking:
 Untracked: New files Git isn’t tracking.
 Modified: Changed files not staged.
 Staged: Files ready for commit.
+
+
+Understanding the Concept of Commit and Checking File Status:
+Commit: A commit records a snapshot of changes, with a unique ID and message.
+git status: Check which files are modified, staged, or untracked before committing.
+Committing: Stage files with git add and commit with git commit -m "message".
+Commit Message: Be clear and descriptive about the changes made.
+
+
+Branch: A separate line of development for features or fixes.
+Create a Branch:
+git branch <branch_name>
+Shift to that branch or use that branch:
+git checkout <branch_name>
+List Branches:
+git branch
+Merge Branches: Bring changes from a branch into the main branch:
+git checkout main
+git merge <branch_name>
+
+
+Understanding Branching and Merging in Git:
+Branching: Create branches for features or fixes:
+git checkout -b <branch_name>
+Merging: Merge a branch into main to integrate changes:
+git checkout main //shift to main
+git merge <branch_name> //now merge the branch to main
+Fast-Forward Merge: If no changes in main, Git simply moves the pointer.
+Three-Way Merge: If changes exist in both branches, Git combines them into a new commit.
+Merge Conflicts: Resolve conflicting changes manually, then commit.
