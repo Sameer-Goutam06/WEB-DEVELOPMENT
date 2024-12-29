@@ -13,6 +13,7 @@ to make an offline copy present online
 
 
 Managing and Making a Project Available in GitHub:
+--------------------------------------------------------------------------------------------------------------------------------
 Create a Repo on GitHub: Name it and copy the URL.
 Set Up Locally:
 Create or use an existing project folder.
@@ -25,14 +26,17 @@ Check GitHub: Refresh to see your files online.
 
 
 Creating and Managing Saved Points in Git:
+--------------------------------------------------------------------------------------------------------------------------------
 Stage Changes: Use "git add <file>" or git add . to prepare files.
 Commit Changes: Save with "git commit -m "message"".
 View History: Check commits using "git log".
 Revert if Needed: Undo uncommitted changes with "git restore <file>" or revisit previous commits with "git checkout <hash>".
 
-The git checkout <hash> command in Git allows you to view a specific past version of your project by switching to that commit's state. However, this puts you in a "detached HEAD" state, meaning any changes you make won't be associated with a branch and could be lost.
+The git checkout <hash> command in Git allows you to view a specific past version of your project by switching to that commit's state. 
+However, this puts you in a "detached HEAD" state, meaning any changes you make won't be associated with a branch and could be lost.
 
-To safely work with a past commit, create a new branch from it using git checkout -b <new_branch_name> <hash>. This ensures your changes are tracked and allows you to easily merge or discard them later.
+To safely work with a past commit, create a new branch from it using git checkout -b <new_branch_name> <hash>. 
+This ensures your changes are tracked and allows you to easily merge or discard them later.
 
 To return to the main branch:
 If you have no uncommitted changes: git checkout main
@@ -43,6 +47,7 @@ git stash pop to restore the changes.
 Note: git reset --hard HEAD can also switch you back to the last commit, but it discards all uncommitted changes, so use it with caution.
 
 Exploring Git Reset Options:
+--------------------------------------------------------------------------------------------------------------------------------
 Soft Reset: Move HEAD to a previous commit but keep changes staged:
 git reset --soft <commit_hash>
 Mixed Reset: Move HEAD, unstage changes but keep them locally:
@@ -52,6 +57,7 @@ git reset --hard <commit_hash>
 
 
 Understanding Git and GitHub Workflow:
+--------------------------------------------------------------------------------------------------------------------------------
 Clone: Copy a GitHub repo to your local machine:
 git clone <repository_url>
 Make Changes: Modify files locally.
@@ -67,6 +73,7 @@ git checkout -b feature-branch
 
 
 Understanding Git Permissions and Folder Recognition:
+--------------------------------------------------------------------------------------------------------------------------------
 File Permissions: Git tracks file permission changes (e.g., making a file executable), but not regular changes unless the file is executable.
     chmod +x script.sh
     git commit -m "Make script executable"
@@ -75,8 +82,10 @@ Remote Permissions: Permissions for executable files are preserved when pushed t
 
 
 Understanding Git Concepts and Commands:
+--------------------------------------------------------------------------------------------------------------------------------
 Git Basics: Git tracks file changes and maintains project history.
 Common Commands:
+--------------------------
 git init: Initialize a repo.
 git status: Check changes.
 git add <file>: Stage files.
@@ -87,6 +96,7 @@ git log: View commit history.
 
 
 Understanding Git Status and File Tracking:
+--------------------------------------------------------------------------------------------------------------------------------
 git status: Shows the state of files in your project (untracked, modified, staged).
 File Tracking:
 Untracked: New files Git isn’t tracking.
@@ -95,12 +105,14 @@ Staged: Files ready for commit.
 
 
 Understanding the Concept of Commit and Checking File Status:
+--------------------------------------------------------------------------------------------------------------------------------
 Commit: A commit records a snapshot of changes, with a unique ID and message.
 git status: Check which files are modified, staged, or untracked before committing.
 Committing: Stage files with git add and commit with git commit -m "message".
 Commit Message: Be clear and descriptive about the changes made.
 
-
+Understanding Branching in Git:
+--------------------------------------------------------------------------------------------------------------------------------
 Branch: A separate line of development for features or fixes.
 Create a Branch:
 git branch <branch_name>
@@ -114,6 +126,7 @@ git merge <branch_name>
 
 
 Understanding Branching and Merging in Git:
+--------------------------------------------------------------------------------------------------------------------------------
 Branching: Create branches for features or fixes:
 git checkout -b <branch_name>
 Merging: Merge a branch into main to integrate changes:
@@ -122,3 +135,45 @@ git merge <branch_name> //now merge the branch to main
 Fast-Forward Merge: If no changes in main, Git simply moves the pointer.
 Three-Way Merge: If changes exist in both branches, Git combines them into a new commit.
 Merge Conflicts: Resolve conflicting changes manually, then commit.
+
+
+Learning About Code Merging and Branching:
+--------------------------------------------------------------------------------------------------------------------------------
+Branching and Merging: Work on separate branches for features/bug fixes, then merge them into the main branch once complete.
+Collaborative Workflow: Multiple developers can work on different branches and merge their work into the main branch.
+Merge Conflicts: Manually resolve conflicts if Git cannot automatically merge changes.
+
+
+Handling Conflicts While Merging Code:
+--------------------------------------------------------------------------------------------
+Merge Conflict: Occurs when two branches modify the same part of a file, such as a function, and Git cannot automatically decide which change to keep.
+Identifying Conflicts: Git marks conflicts in the file with <<<<<<<, =======, and >>>>>>>.
+Resolving Conflicts: Manually edit the file to decide which changes to keep, then remove the conflict markers.
+Finalizing Merge: Stage the resolved files with git add and commit the merge.
+
+
+Features in Git Branches Explained:
+-------------------------------------------------------
+Branches: Separate lines of development for features or fixes.
+Branch Isolation: Each branch works as an isolated environment for different tasks.
+Switching Branches: Use git checkout <branch_name> to switch branches.
+Creating/Deleting Branches:
+Create: git branch <branch_name>
+Delete: git branch -d <branch_name>
+Merging and Conflicts: When merging, resolve conflicts manually if needed.
+Remote Branches: Push local branches to remote repositories with git push.
+
+
+Navigating Between Branches and Managing Changes:
+----------------------------------------------------------------
+Switching Branches: Use git checkout <branch_name> to switch between branches.
+Making Changes: Work on separate features in different branches without affecting others.
+Checking Out Remote Branches: Use git fetch and git checkout <branch_name> to access remote branches.
+Uncommitted Changes: If you have uncommitted changes and need to switch branches, use git stash to temporarily save changes without committing. 
+This prevents conflicts and allows you to safely switch branches. Later, you can retrieve the changes with git stash apply.
+Merging Changes: Use git merge <branch_name> to merge changes from other branches.
+Reason to Stash:
+-----------------
+Stash is useful when you have uncommitted changes in a branch but need to switch to another branch (e.g., to pull or fix something). 
+Stashing temporarily stores the changes so you can switch branches without losing your work, and then you can apply them back once you're ready.
+
