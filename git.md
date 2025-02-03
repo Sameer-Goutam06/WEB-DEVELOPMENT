@@ -1,4 +1,4 @@
-**Optimized Git and GitHub Notes**
+**Git and GitHub Commands**
 
 ---
 
