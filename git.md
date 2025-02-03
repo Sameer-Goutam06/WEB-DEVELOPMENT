@@ -1,6 +1,5 @@
 ## Git and GitHub Cheatsheeet
 
----
 ### Configuring Git
 
 1. **Global Configuration**:
