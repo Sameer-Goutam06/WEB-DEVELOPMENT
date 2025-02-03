@@ -1,4 +1,4 @@
-### Git and GitHub Cheatsheet
+## Git and GitHub Cheatsheet
 
 ---
 
