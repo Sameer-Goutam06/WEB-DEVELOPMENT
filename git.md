@@ -1,4 +1,5 @@
-## Git and GitHub Cheatsheeet
+# Git and GitHub Cheatsheeet
+
 
 ### Configuring Git
 
